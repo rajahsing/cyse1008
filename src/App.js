@@ -20,7 +20,6 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-<<<<<<< HEAD
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
@@ -37,9 +36,7 @@ function App() {
         </a>
       </header>
     </div>
-=======
     <RouterProvider router={router} />
->>>>>>> feature/assignment2
   );
 }
 
