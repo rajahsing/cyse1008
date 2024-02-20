@@ -1,8 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import ProtectedRoute from './components/ProtectedRoute';
+import SignInPage from './components/SignInPage';
+import HomePage from './components/HomePage';
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <ProtectedRoute><HomePage/></ProtectedRoute>,
+  },
+  {
+    path: "/signin",
+    element: <SignInPage />
+  }
+]);
 
 function App() {
   return (
+<<<<<<< HEAD
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
@@ -19,6 +37,9 @@ function App() {
         </a>
       </header>
     </div>
+=======
+    <RouterProvider router={router} />
+>>>>>>> feature/assignment2
   );
 }
 
