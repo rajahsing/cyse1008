@@ -1,23 +1,39 @@
 import React, { useState } from 'react';
 import {
-    createUserWithEmailAndPassword,
-    signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
 } from "../store"
 import { useDispatch } from "react-redux";
+import { Container, Stack, TextField, Button, IconButton, InputAdornment } from '@mui/material';
+import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
 
 function SignInPage() {
   const dispatch = useDispatch();
+  const navigate = useNavigate(); // Initialize useNavigate hook
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleSubmitSignIn = (event) => {
+  const handleSubmitSignIn = async (event) => {
     event.preventDefault();
-    dispatch(signInWithEmailAndPassword(formData));
+    try {
+      await dispatch(signInWithEmailAndPassword(formData)).unwrap(); // Ensure signInWithEmailAndPassword is set up to return a promise
+      navigate('/'); // Navigate to home page on successful sign-in
+    } catch (error) {
+      // Handle sign-in error
+      console.error('Sign-in failed:', error);
+    }
   };
 
-  const handleSubmitRegister = (event) => {
+  const handleSubmitRegister = async (event) => {
     event.preventDefault();
-    dispatch(createUserWithEmailAndPassword(formData));
+    try {
+      await dispatch(createUserWithEmailAndPassword(formData)).unwrap(); // Ensure createUserWithEmailAndPassword is set up to return a promise
+      navigate('/'); // Navigate to home page on successful registration
+    } catch (error) {
+      // Handle registration error
+      console.error('Registration failed:', error);
+    }
   };
 
   const handleChange = (event) => {
@@ -29,71 +45,56 @@ function SignInPage() {
   };
 
   return (
-    <>
+    <Container maxWidth="sm">
+      <Stack spacing={1}>
         <form autoComplete="on" onSubmit={handleSubmitRegister}>
-      <div>
-        <label htmlFor="email">Email</label>
-        <input
-          autoFocus
-          type="email"
-          id="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <div>
-        <label htmlFor="password">Password</label>
-        <input
-          type={showPassword ? "text" : "password"}
-          id="password"
-          name="password"
-          value={formData.password}
-          onChange={handleChange}
-          required
-        />
-        <button type="button" onClick={toggleShowPassword}>
-          {showPassword ? "Hide" : "Show"}
-        </button>
-      </div>
-      <div>
-        <button type="submit">Register</button>
-      </div>
-    </form>
-    <form autoComplete="on" onSubmit={handleSubmitSignIn}>
-      <div>
-        <label htmlFor="email">Email</label>
-        <input
-          autoFocus
-          type="email"
-          id="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <div>
-        <label htmlFor="password">Password</label>
-        <input
-          type={showPassword ? "text" : "password"}
-          id="password"
-          name="password"
-          value={formData.password}
-          onChange={handleChange}
-          required
-        />
-        <button type="button" onClick={toggleShowPassword}>
-          {showPassword ? "Hide" : "Show"}
-        </button>
-      </div>
-      <div>
-        <button type="submit">Sign In</button>
-      </div>
-    </form>
-    </>
-
+          <TextField
+            autoFocus
+            label="Email"
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+            fullWidth
+            margin="normal"
+            variant="outlined"
+          />
+          <TextField
+            label="Password"
+            type={showPassword ? "text" : "password"}
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+            fullWidth
+            margin="normal"
+            variant="outlined"
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={toggleShowPassword}
+                  >
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
+          />
+          <Button type="submit" variant="contained" color="primary" fullWidth sx={{ bottomMargin: 2 }}>
+            Register
+          </Button>
+        </form>
+        <form autoComplete="on" onSubmit={handleSubmitSignIn}>
+          {/* ... Repeat the same TextField and Button components for sign-in ... */}
+          <Button type="submit" variant="contained" color="secondary" fullWidth>
+            Sign In
+          </Button>
+        </form>
+      </Stack>
+    </Container>
   );
 }
 

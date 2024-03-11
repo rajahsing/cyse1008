@@ -33,7 +33,9 @@ export const signInWithEmailAndPassword = createAsyncThunk(
     try {
       const response = await api.login(payload.email, payload.password)
       const { user, providerId } = response;
+      console.log({ user });
       const { displayName, email, photoURL, uid } = user;
+
       return { user: { displayName, email, photoURL, uid }, providerId };
     } catch (error) {
       console.log({ error })
@@ -75,8 +77,18 @@ export const authSlice = createSlice({
       state.user = action.payload;
     },
   },
+  extraReducers: (builder) => {
+    builder
+    .addCase(signInWithEmailAndPassword.fulfilled, (state, action) => {
+      state.status = "idle";
+      state.user = action.payload.user;
+      state.providerId = action.payload.providerId;
+      state.isLoggedIn = action.payload.user !== undefined;
+    })
+  }
 });
 
 export const { setUser } = authSlice.actions;
+export const selectIsAuthenticated = (state) => state.users.isLoggedIn;
 export const selectUser = (state) => state.auth.user;
 export default authSlice.reducer;
