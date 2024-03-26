@@ -18,11 +18,19 @@ export const grey = {
 };
 
 export const primary = {
+<<<<<<< HEAD
   lighter: '#D0ECFE',
   light: '#73BAFB',
   main: '#1877F2',
   dark: '#0C44AE',
   darker: '#042174',
+=======
+  lighter: '#C8FAD6',
+  light: '#5BE49B',
+  main: '#00A76F',
+  dark: '#007867',
+  darker: '#004B50',
+>>>>>>> feature/assignment5
   contrastText: '#FFFFFF',
 };
 
@@ -45,12 +53,21 @@ export const info = {
 };
 
 export const success = {
+<<<<<<< HEAD
   lighter: '#C8FAD6',
   light: '#5BE49B',
   main: '#00A76F',
   dark: '#007867',
   darker: '#004B50',
   contrastText: '#FFFFFF',
+=======
+  lighter: '#D3FCD2',
+  light: '#77ED8B',
+  main: '#22C55E',
+  dark: '#118D57',
+  darker: '#065E49',
+  contrastText: '#ffffff',
+>>>>>>> feature/assignment5
 };
 
 export const warning = {
@@ -101,8 +118,13 @@ const base = {
 
 // ----------------------------------------------------------------------
 
+<<<<<<< HEAD
 export function palette() {
   return {
+=======
+export function palette(mode) {
+  const light = {
+>>>>>>> feature/assignment5
     ...base,
     mode: 'light',
     text: {
@@ -112,7 +134,11 @@ export function palette() {
     },
     background: {
       paper: '#FFFFFF',
+<<<<<<< HEAD
       default: grey[100],
+=======
+      default: '#FFFFFF',
+>>>>>>> feature/assignment5
       neutral: grey[200],
     },
     action: {
@@ -120,4 +146,28 @@ export function palette() {
       active: grey[600],
     },
   };
+<<<<<<< HEAD
+=======
+
+  const dark = {
+    ...base,
+    mode: 'dark',
+    text: {
+      primary: '#FFFFFF',
+      secondary: grey[500],
+      disabled: grey[600],
+    },
+    background: {
+      paper: grey[800],
+      default: grey[900],
+      neutral: alpha(grey[500], 0.12),
+    },
+    action: {
+      ...base.action,
+      active: grey[500],
+    },
+  };
+
+  return mode === 'light' ? light : dark;
+>>>>>>> feature/assignment5
 }

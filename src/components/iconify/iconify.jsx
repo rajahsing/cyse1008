@@ -23,6 +23,9 @@ Iconify.propTypes = {
   width: PropTypes.number,
 };
 
+<<<<<<< HEAD
 Iconify.displayName = 'Iconify';
 
+=======
+>>>>>>> feature/assignment5
 export default Iconify;

@@ -108,6 +108,9 @@ ColorPicker.propTypes = {
   sx: PropTypes.object,
 };
 
+<<<<<<< HEAD
 ColorPicker.displayName = 'ColorPicker';
 
+=======
+>>>>>>> feature/assignment5
 export default ColorPicker;

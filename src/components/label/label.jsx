@@ -58,6 +58,9 @@ Label.propTypes = {
   ]),
 };
 
+<<<<<<< HEAD
 Label.displayName = 'Label';
 
+=======
+>>>>>>> feature/assignment5
 export default Label;

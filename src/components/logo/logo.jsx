@@ -5,7 +5,11 @@ import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
 import { useTheme } from '@mui/material/styles';
 
+<<<<<<< HEAD
 import { RouterLink } from '../../routes/components';
+=======
+import { RouterLink } from 'src/routes/components';
+>>>>>>> feature/assignment5
 
 // ----------------------------------------------------------------------
 
@@ -92,6 +96,9 @@ Logo.propTypes = {
   sx: PropTypes.object,
 };
 
+<<<<<<< HEAD
 Logo.displayName = 'Logo';
 
+=======
+>>>>>>> feature/assignment5
 export default Logo;

@@ -5,10 +5,14 @@
   },
   "hosting": {
 <<<<<<< HEAD
+<<<<<<< HEAD
     "public": "public",
 =======
     "public": "build",
 >>>>>>> feature/assignment3
+=======
+    "public": "public",
+>>>>>>> feature/assignment5
     "ignore": [
       "firebase.json",
       "**/.*",

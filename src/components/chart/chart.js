@@ -3,7 +3,11 @@ import ApexChart from 'react-apexcharts';
 
 import { alpha, styled } from '@mui/material/styles';
 
+<<<<<<< HEAD
 import { bgBlur } from '../../theme/css';
+=======
+import { bgBlur } from 'src/theme/css';
+>>>>>>> feature/assignment5
 
 // ----------------------------------------------------------------------
 
